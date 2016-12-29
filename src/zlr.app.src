@@ -1,0 +1,15 @@
+{application, zlr, [
+    {description, "Simple example application for Phu"},
+    {vsn, "0.0.1"},
+    {id, "zlr"},  % I think it is need for relx
+    {modules, []},  % Here erlang.mk inserts all application modules, not added automatically, required by relx
+    {registered, [zlr]},
+    {applications, [    % order list of run-time dependencies (applications who must run before main application start
+        kernel,     % mandratory 
+        stdlib,     % mandratory
+        cowboy
+    ]},
+    {included_applications, []},
+    {mod, {zlr_app, []}}, % Tells the OTP system how to start your application. The value is a tuple containing the module name along with some optional startup arguments.
+    {env, []}
+]}.
