@@ -19,11 +19,6 @@
     
 init(Req0, Opts) ->
     Method = cowboy_req:method(Req0),
-    #{wait := Wait} = cowboy_req:match_qs([{'wait', [], 'undefined'}], Req0),
-    case Wait of
-        'undefined' -> ok;
-        Time -> timer:sleep(binary_to_integer(Time))
-    end,
     Req = process_req(Method, Req0),
     {ok, Req, Opts}.
 
@@ -37,5 +32,7 @@ process_req(_Method, Req) ->
         <<"
         <!DOCTYPE html>
         <html lang=\"en\"><body>
-        Hey Phu! <a href = \"http://www.seeyouspacecowboy.com/\">See your universe</a></body</html>">>, 
+        <div style=\"position: fixed; z-index: -99; width: 100%; height: 100%\">
+            <iframe frameborder=\"0\" height=\"100%\" width=\"100%\" src=\"https://youtube.com/embed/ZzkymYbhUCs?autoplay=1&controls=0&showinfo=0&autohide=1\"></iframe>
+        </div></body</html>">>, 
     Req).

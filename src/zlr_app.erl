@@ -24,7 +24,7 @@ start(_Type, _Args) ->
 		]}
 	]),
 
-	{ok, _} = cowboy:start_clear(http, 10, [{port, 8080}], #{
+	{ok, _} = cowboy:start_clear(http, 10, [{port, 80}], #{
 		env => #{dispatch => Dispatch}
 	}).
 
